@@ -13,6 +13,9 @@
     <None Remove="Layouts\Components\**" />
   </ItemGroup>
   <ItemGroup>
+    <None Remove="README.md" />
+  </ItemGroup>
+  <ItemGroup>
 	<PackageReference Include="System.Net.Http.Json" Version="5.0.0" />
     <PackageReference Include="ElectronNET.API" Version="11.5.1" />
 	<PackageReference Include="FreeSql" Version="2.0.105" />
