@@ -46,7 +46,7 @@ npm install --registry=https://registry.npm.taobao.org
 
 ### 提示
 >如果安装eletron在node install.js特别慢，打开命令台运行npm config edit，
->在.npmrc文件中增加ELECTRON_MIRROR="https://npm.taobao.org/mirrors/electron/"保存并退出
+>在.npmrc文件中增加 ELECTRON_MIRROR="https://npm.taobao.org/mirrors/electron/" 保存并退出
 
 ### 安装完成后，调试命令选择SuperCode Watch编译运行
 调试命令说明
