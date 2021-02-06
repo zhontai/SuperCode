@@ -63,4 +63,5 @@ electronize build /target osx
 electronize build /target linux
 ```
 
-### 修改样式less文件后，打开任务运行资源管理器，选择任务/less右键运行生成css文件
+### 提示
+>修改样式less文件，需要打开任务运行资源管理器，选择任务/less右键运行生成css文件，再刷新Web项目
