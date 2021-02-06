@@ -1,0 +1,24 @@
+﻿@page "/connection"
+@inherits ConnectionBase
+<div style="padding:10px;">
+    <BForm Inline="true" @ref="searchForm">
+        <BFormItem TValue="string" Label="连接名" Name="@nameof(ConnectionEntity.ConnectionName)">
+            <BInput TValue="string" IsClearable></BInput>
+        </BFormItem>
+        <BFormActionItem>
+            <BButton Type="@ButtonType.Primary" OnClick="RefreshAsync" IsLoading="isLoading">搜索</BButton>
+        </BFormActionItem>
+        <BFormActionItem>
+            <BButton Type="@ButtonType.Primary" OnClick="AddAsync">新增连接</BButton>
+        </BFormActionItem>
+    </BForm>
+    <BTable DataSource="Connections" IsStripe @ref="table" IgnoreProperties="new string[] { nameof(ConnectionEntity.Id) }" HasSelectionColumn="false">
+        <BTableColumns>
+            <BTableTemplateColumn Text="操作" Context="role">
+                <BButton Type="@ButtonType.Primary" OnClick="@(e => EditAsync(role))">编辑</BButton>
+                <BButton Type="@ButtonType.Danger" OnClick="@(e => DeleteAsync(role))">删除</BButton>
+                <BButton Type="@ButtonType.Primary" OnClick="@(e => TestConnectionAsync(role))" IsLoading="((ConnectionEntity)role)._TestConnectioinLoading">测试</BButton>
+            </BTableTemplateColumn>
+        </BTableColumns>
+    </BTable>
+</div>

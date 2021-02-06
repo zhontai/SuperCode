@@ -1,0 +1,7 @@
+﻿@inherits BFieldComponentBase<IEnumerable<TValue>>
+@typeparam TValue
+<div role="group" aria-label="checkbox-group" class="el-checkbox-group @Cls">
+    <CascadingValue Value="this">
+        @ChildContent
+    </CascadingValue>
+</div>

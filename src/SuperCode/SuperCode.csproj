@@ -1,0 +1,60 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+  <PropertyGroup>
+    <TargetFramework>net5.0</TargetFramework>
+    <GeneratePackageOnBuild>false</GeneratePackageOnBuild>
+    <RepositoryUrl>https://github.com/zhontai/SuperCode</RepositoryUrl>
+    <PackageProjectUrl>https://github.com/zhontai</PackageProjectUrl>
+    <PackageTags>Net5,Electron,Blazor,FreeSql</PackageTags>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Remove="Layouts\Components\**" />
+    <Content Remove="Layouts\Components\**" />
+    <EmbeddedResource Remove="Layouts\Components\**" />
+    <None Remove="Layouts\Components\**" />
+  </ItemGroup>
+  <ItemGroup>
+	<PackageReference Include="System.Net.Http.Json" Version="5.0.0" />
+    <PackageReference Include="ElectronNET.API" Version="11.5.1" />
+	<PackageReference Include="FreeSql" Version="2.0.105" />
+	<PackageReference Include="FreeSql.All" Version="2.0.105" />
+	<PackageReference Include="FreeSql.Repository" Version="2.0.105" />
+  </ItemGroup>
+  <PropertyGroup Condition=" '$(SolutionDir)'==''">
+    <SolutionDir>./</SolutionDir>
+  </PropertyGroup>
+  <Target Name="DebugEnsureNodeEnv" BeforeTargets="Build" Condition=" '$(Configuration)' == 'Debug' And !Exists('$(SolutionDir)node_modules') ">
+    <!-- Ensure Node.js is installed -->
+    <Exec Command="node --version" ContinueOnError="true">
+      <Output TaskParameter="ExitCode" PropertyName="ErrorCode" />
+    </Exec>
+    <Error Condition="'$(ErrorCode)' != '0'" Text="Node.js is required to build and run this project. To continue, please install Node.js from https://nodejs.org/, and then restart your command prompt or IDE." />
+    <Message Importance="high" Text="Restoring dependencies using 'npm'. This may take several minutes..." />
+    <Exec WorkingDirectory="$(SolutionDir)" Command="npm install" />
+  </Target>
+  <Target Name="DebugRunGulp" BeforeTargets="DebugEnsureNodeEnv" Condition=" '$(Configuration)' == 'Debug' And Exists('$(SolutionDir)node_modules') ">
+    <Exec WorkingDirectory="$(SolutionDir)" Command="npm run gulp:pro" />
+  </Target>
+  <Target Name="PublishRunGulp" AfterTargets="ComputeFilesToPublish">
+    <Exec WorkingDirectory="$(SolutionDir)" Command="npm install" />
+    <Exec WorkingDirectory="$(SolutionDir)" Command="npm run gulp:pro" />
+  </Target>
+  <ItemGroup>
+    <Content Update="electron.manifest.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Update="wwwroot\css\site.css">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Update="wwwroot\logo.ico">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <None Update="assets\images\tray\quit.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Element\Element.csproj" />
+  </ItemGroup>
+</Project>

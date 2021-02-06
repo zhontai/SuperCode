@@ -1,0 +1,18 @@
+﻿@inherits ConnectionEditBase
+<BForm Value="Connection" @ref="form">
+    <BFormItem TValue="long" IsHidden="true" Name="@nameof(ConnectionEntity.Id)">
+        <BInput TValue="long"></BInput>
+    </BFormItem>
+    <BFormItem TValue="string" Label="连接名" Name="@nameof(ConnectionEntity.ConnectionName)" IsRequired="true">
+        <BInput TValue="string"></BInput>
+    </BFormItem>
+    <BFormItem TValue="FreeSql.DataType" Label="数据库类型" Name="@nameof(ConnectionEntity.DbType)" IsRequired="true">
+        <BSelect TValue="FreeSql.DataType"></BSelect>
+    </BFormItem>
+    <BFormItem TValue="string" Label="连接字符串" Name="@nameof(ConnectionEntity.ConnectionString)" IsRequired="true">
+        <BInput Type="InputType.Textarea" TValue="string"></BInput>
+    </BFormItem>
+    <BFormActionItem Style="text-align:right">
+        <BButton OnClick="SubmitAsync" IsLoading="isLoading">确定</BButton>
+    </BFormActionItem>
+</BForm>

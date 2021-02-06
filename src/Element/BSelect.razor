@@ -1,0 +1,14 @@
+﻿@inherits BFieldComponentBase<TValue>
+@typeparam TValue
+@{
+    var suffixIconClsList = new List<string>();
+    suffixIconClsList.Add("el-select__caret");
+    suffixIconClsList.Add("el-icon-arrow-up");
+    if (dropDownOption != null && dropDownOption.IsShow)
+    {
+        suffixIconClsList.Add("is-reverse");
+    }
+}
+<div class="@warpperClsBuilder.ToString()" @onclick="OnSelectClick" @ref="elementSelect">
+    <BInput TValue="string" IsClearable="isClearable" @bind-EnableClearButton="EnableClearButton" SuffixIcon="@string.Join(" ",suffixIconClsList)" Placeholder="@Placeholder" ValueChanged="UpdateValue" Value="@Label" AdditionalClearIcon="el-select__caret"></BInput>
+</div>

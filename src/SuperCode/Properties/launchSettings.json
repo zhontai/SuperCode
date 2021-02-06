@@ -1,0 +1,31 @@
+{
+  "profiles": {
+    "SuperCode Watch": {
+      "commandName": "Executable",
+      "executablePath": "electronize",
+      "commandLineArgs": "start /watch",
+      "workingDirectory": "."
+    },
+    "SuperCode Start": {
+      "commandName": "Executable",
+      "executablePath": "electronize",
+      "commandLineArgs": "start",
+      "workingDirectory": "."
+    },
+    "SuperCode Build": {
+      "commandName": "Executable",
+      "executablePath": "electronize",
+      "commandLineArgs": "build /target win",
+      "workingDirectory": "."
+    },
+    "SuperCode Web": {
+      "commandName": "Project",
+      "dotnetRunMessages": "false",
+      "launchBrowser": true,
+      "applicationUrl": "https://localhost:6001;http://localhost:6000",
+      "environmentVariables": {
+        "ASPNETCORE_ENVIRONMENT": "Development"
+      }
+    }
+  }
+}

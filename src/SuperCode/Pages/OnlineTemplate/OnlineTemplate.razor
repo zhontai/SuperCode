@@ -1,0 +1,26 @@
+﻿@page "/online-template"
+@inherits OnlineTemplateBase
+<div style="padding:10px;">
+    <BForm Inline="true" @ref="searchForm">
+        <BFormItem TValue="string" Label="模板工具名" Name="@nameof(ConnectionEntity.ConnectionName)">
+            <BInput TValue="string" IsClearable></BInput>
+        </BFormItem>
+        <BFormActionItem>
+            <BButton Type="@ButtonType.Primary" OnClick="RefreshAsync" IsLoading="isLoading">搜索</BButton>
+        </BFormActionItem>
+        <BFormActionItem>
+            <BButton Type="@ButtonType.Primary" OnClick="AddAsync">新增模板工具</BButton>
+        </BFormActionItem>
+    </BForm>
+    <BTable @ref="table" DataSource="Lists" IsStripe IgnoreProperties="new string[] { nameof(OnlineTemplateToolEntity.Id) }" HasSelectionColumn="false">
+        <BTableColumns>
+            <BTableTemplateColumn Text="操作" Context="role">
+                <BButton Type="@ButtonType.Primary" OnClick="@(e => EditAsync(role))">编辑</BButton>
+                <BButton Type="@ButtonType.Danger" OnClick="@(e => DeleteAsync(role))">删除</BButton>
+                <BButton Type="@ButtonType.Primary" OnClick="@(e => InstallToolAsync(role))" IsLoading="((OnlineTemplateToolEntity)role)._InstallLoading">安装</BButton>
+                <BButton Type="@ButtonType.Primary" OnClick="@(e => UnInstallToolAsync(role))" IsLoading="((OnlineTemplateToolEntity)role)._UnInstallLoading">卸载</BButton>
+                <BButton Type="@ButtonType.Primary" OnClick="@(e => CreateToolAsync(role))" IsLoading="((OnlineTemplateToolEntity)role)._CreateLoading">创建</BButton>
+            </BTableTemplateColumn>
+        </BTableColumns>
+    </BTable>
+</div>

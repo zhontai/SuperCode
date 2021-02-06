@@ -1,0 +1,19 @@
+{
+  "connections": [
+    {
+      "id": 1,
+      "connectionName": "supercode",
+      "dbType": 4,
+      "connectionString": "Data Source=|DataDirectory|\\\\code.db; Pooling=true;Min Pool Size=1"
+    }
+  ],
+  "onlineTemplateTools": [
+    {
+      "id": 1,
+      "name": "FreeSql.Generator",
+      "installCommand": "dotnet tool install -g FreeSql.Generator",
+      "unInstallCommand": "dotnet tool uninstall -g FreeSql.Generator",
+      "createCommand": "FreeSql.Generator -Razor 1 -NameOptions 0,0,0,0 -NameSpace MyCompany.BusinessDomain -DB \"Sqlite,Data Source=F:\\\\zhontai\\\\SuperCode\\\\src\\SuperCode\\\\bin\\\\Debug\\\\net5.0\\\\code.db; Pooling=true;Min Pool Size=1\""
+    }
+  ]
+}

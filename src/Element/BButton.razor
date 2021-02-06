@@ -1,0 +1,41 @@
+﻿@inherits BComponentBase
+@{
+    var icon = Icon;
+    if (IsLoading)
+    {
+        icon = "el-icon-loading";
+    }
+
+}
+@if (string.IsNullOrWhiteSpace(Image))
+{
+    <button type="button" @onclick="OnButtonClickedAsync" style="@Style" class="@cssClassBuilder">
+        @if (string.IsNullOrWhiteSpace(icon))
+        {
+            @if (string.IsNullOrWhiteSpace(Text))
+            {
+                <span>@ChildContent</span>
+            }
+            else
+            {
+                <span>@Text</span>
+            }
+        }
+        else
+        {
+            @if (string.IsNullOrWhiteSpace(Text))
+            {
+                <span>@ChildContent</span>
+            }
+            else
+            {
+                <span>@Text</span>
+            }
+            <i class="@icon"></i>
+        }
+    </button>
+}
+else
+{
+    <img src="@showingImage" class="@Cls" @onclick="OnButtonClickedAsync" style="@HtmlPropertyBuilder.CreateCssStyleBuilder().Add(Style).Add("cursor:pointer").ToString()" @onmouseover="MouseOver" @onmouseout="MouseOut" />
+}

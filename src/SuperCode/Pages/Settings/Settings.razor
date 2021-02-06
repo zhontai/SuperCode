@@ -1,0 +1,27 @@
+﻿@page "/settings"
+@using SuperCode.Configs
+@inherits SettingsBase
+<div style="padding:15px 30px;">
+    <BForm @ref="form" Style="width:400px;" LabelAlign="LabelAlign.Top">
+        <div style="margin-bottom:15px;">
+            <div style="margin-bottom:10px;">
+                <label for="name" class="el-form-item__label" style="width:100%;">
+                    基本设置
+                </label>
+            </div>
+            <div>
+                <BCheckBox TValue="bool" Value="true" Status="CodeSettings.OpenAtLogin?Status.Checked:Status.UnChecked" ValueChanged="OpenAtLoginChanged">开机自动启动</BCheckBox>
+            </div>
+            <div style="margin-top:5px;">
+                <BCheckBox TValue="bool" Value="true" Status="CodeSettings.CloseToTray?Status.Checked:Status.UnChecked" ValueChanged="CloseToTrayChanged">窗口关闭时最小化到托盘</BCheckBox>
+            </div>
+        </div>
+        <BFormItem TValue="string" Label="保存路径" Name="@nameof(CodeSettings.SavePath)">
+            <BInput TValue="string" Value="CodeSettings.SavePath" IsReadOnly="true" Placeholder=""></BInput>
+            <div style="margin-top:10px;">
+                <BButton OnClick="ChangeSavePathAsync">更改目录</BButton>
+                <BButton OnClick="OpenSavePathAsync">打开文件夹</BButton>
+            </div>
+        </BFormItem>
+    </BForm>
+</div>

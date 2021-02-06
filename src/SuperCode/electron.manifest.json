@@ -1,0 +1,49 @@
+{
+  "executable": "SuperCode",
+  "splashscreen": {
+    "imageFile": ""
+  },
+  "name": "SuperCode",
+  "author": "xiaoxue",
+  "singleInstance": true,
+  "environment": "Production",
+  "build": {
+    "appId": "com.SuperCode.app",
+    "productName": "SuperCode",
+    "copyright": "Copyright © 2020",
+    "buildVersion": "1.0.0",
+    "compression": "maximum",
+    "win": {
+      "icon": "bin/wwwroot/logo.ico",
+      "target": "nsis"
+    },
+    "nsis": {
+      "oneClick": false,
+      "allowToChangeInstallationDirectory": true,
+      "perMachine": true,
+      "installerIcon": "./bin/wwwroot/logo.ico",
+      "installerHeaderIcon": "./bin/wwwroot/logo.ico",
+      "createDesktopShortcut": true,
+      "createStartMenuShortcut": false,
+      "shortcutName": "SuperCode"
+    },
+    "directories": {
+      "output": "../../../bin/Desktop"
+    },
+    "extraResources": [
+      {
+        "from": "./bin",
+        "to": "bin",
+        "filter": [ "**/*" ]
+      }
+    ],
+    "files": [
+      {
+        "from": "./ElectronHostHook/node_modules",
+        "to": "ElectronHostHook/node_modules",
+        "filter": [ "**/*" ]
+      },
+      "**/*"
+    ]
+  }
+}

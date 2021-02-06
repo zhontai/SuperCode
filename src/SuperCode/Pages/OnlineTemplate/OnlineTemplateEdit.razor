@@ -1,0 +1,21 @@
+﻿@inherits OnlineTemplateEditBase
+<BForm Value="OnlineTemplate" @ref="form">
+    <BFormItem TValue="long" IsHidden="true" Name="@nameof(OnlineTemplateToolEntity.Id)">
+        <BInput TValue="long"></BInput>
+    </BFormItem>
+    <BFormItem TValue="string" Label="模板工具名" Name="@nameof(OnlineTemplateToolEntity.Name)" IsRequired="true">
+        <BInput TValue="string"></BInput>
+    </BFormItem>
+    <BFormItem TValue="string" Label="安装命令" Name="@nameof(OnlineTemplateToolEntity.InstallCommand)" IsRequired="true">
+        <BInput Type="InputType.Textarea" TValue="string"></BInput>
+    </BFormItem>
+    <BFormItem TValue="string" Label="卸载命令" Name="@nameof(OnlineTemplateToolEntity.UnInstallCommand)" IsRequired="true">
+        <BInput Type="InputType.Textarea" TValue="string"></BInput>
+    </BFormItem>
+    <BFormItem TValue="string" Label="创建命令" Name="@nameof(OnlineTemplateToolEntity.CreateCommand)" IsRequired="true">
+        <BInput Type="InputType.Textarea" TValue="string"></BInput>
+    </BFormItem>
+    <BFormActionItem Style="text-align:right">
+        <BButton OnClick="SubmitAsync" IsLoading="isLoading">确定</BButton>
+    </BFormActionItem>
+</BForm>

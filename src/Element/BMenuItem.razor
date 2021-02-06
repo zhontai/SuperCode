@@ -1,0 +1,10 @@
+﻿@inherits BComponentBase
+<li role="menuitem" tabindex="0"
+    @onclick="OnClickAsync"
+    @onmouseover="OnOver"
+    @onmouseout="OnOut"
+    class="el-menu-item @(IsActive?"is-active":"")"
+    style="background-color:@BackgroundColor;color:@TextColor; border-bottom-color:@BorderColor;">
+    <i class="@(Icon ?? "el-icon-menu")"></i>
+    @ChildContent
+</li>

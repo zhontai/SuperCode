@@ -1,0 +1,68 @@
+﻿@namespace SuperCode
+@inherits MultiPagesTabLayout
+
+@{
+    bool curRendered = false;
+    AddPane();
+}
+<BPopup></BPopup>
+<div class="theme-container">
+    <div class="navbar">
+        <BTab @ref="Tab" 
+              Type="@TabType.BorderCard" 
+              DataSource="Tabs"
+              IsEditable="true" 
+              OnTabClose="OnTabClose" 
+              OnActiveTabChanged="OnActiveTabChanged" 
+              Style="border-width:0px;">
+        </BTab>
+    </div>
+    <div class="sidebar">
+        <div style="line-height:39px;padding-left: 25px;border-bottom:1px solid #2A2D2E;border-bottom: 1px solid #2A2D2E;">
+            My SuperCode
+        </div>
+        <div style=" position: absolute; left: 0; right: 0; overflow-y: auto; top: 40px; bottom: 0;">
+            <BMenu @ref="Menu"
+                   Mode="@MenuMode.Vertical"
+                   BackgroundColor="#252526"
+                   HoverColor="#2A2D2E"
+                   TextColor="rgba(255,255,255,.65)"
+                   ActiveTextColor="rgba(255,255,255,.65)">
+                @foreach (var menu in Menus)
+                {
+                    if (menu.Children != null && menu.Children.Any())
+                    {
+                        <BSubMenu @ref="menu.SubMenu" Label="@menu.Label" Icon="@menu.Icon">
+                            @foreach (var children in menu.Children)
+                            {
+                                <BMenuItem Route="@children.Route" Icon="@children.Icon" Model="@children">@children.Label</BMenuItem>
+                            }
+                        </BSubMenu>
+                    }
+                    else
+                    {
+                        <BMenuItem Route="@menu.Route" Icon="@menu.Icon" Model="@menu">@menu.Label</BMenuItem>
+                    }
+                }
+            </BMenu>
+        </div>
+    </div>
+    <div class="page">
+        @foreach (Pane pane in Panes.Values)
+        {
+            if (pane.Url == NavigationManager.Uri)
+                curRendered = true;
+
+            <div @key="pane.Url" style="@(pane.Url == NavigationManager.Uri ? "":"display:none")">
+                @pane.Body
+            </div>
+        }
+
+        @if (!curRendered)
+        {
+            <div>
+                @Body
+            </div>
+        }
+    </div>
+</div>
