@@ -36,8 +36,12 @@ SuperCode是支持跨平台的客户端，主要用来生成中台Admin前后端分离代码。使用到的技术
 ## 快速上手
 
 *********************************************************
-### 项目下载后，首先进入SuperCode目录下安装依赖包
+### 项目下载后，先安装ElectronNET.CLI工具
+```
+dotnet tool install ElectronNET.CLI -g
+```
 
+### 进入SuperCode目录下安装前端需要的依赖包
 ```
 npm install
 或
@@ -45,8 +49,11 @@ npm install --registry=https://registry.npm.taobao.org
 ```
 
 ### 提示
->如果安装eletron在node install.js特别慢，打开命令台运行npm config edit，
->在.npmrc文件中增加 ELECTRON_MIRROR="https://npm.taobao.org/mirrors/electron/" 保存并退出
+>如果安装eletron在node install.js特别慢，打开命令台运行
+>npm config edit，
+>在.npmrc文件中增加
+>ELECTRON_MIRROR="https://npm.taobao.org/mirrors/electron/"
+>保存并退出
 
 ### 安装完成后，调试命令选择SuperCode Watch编译运行
 调试命令说明
