@@ -141,7 +141,8 @@ namespace SuperCode
             });
 
             //开机自动启动
-            //Electron.App.SetLoginItemSettings(new LoginSettings { OpenAtLogin = codeSettings.OpenAtLogin });
+            var codeSettings = new ConfigHelper().Get<CodeSettings>("codesettings", AppContext.BaseDirectory);
+            Electron.App.SetLoginItemSettings(new LoginSettings { OpenAtLogin = codeSettings.OpenAtLogin });
 
             //开发者调试工具
             //if (env.IsDevelopment())
@@ -149,8 +150,10 @@ namespace SuperCode
             //    browserWindow.WebContents.OpenDevTools();
             //}
 
-            await mainWindow.WebContents.Session.ClearCacheAsync();
-            mainWindow.Maximize();
+            //启动最大化显示
+            //await mainWindow.WebContents.Session.ClearCacheAsync();
+            //mainWindow.Maximize();
+
             mainWindow.OnReadyToShow += () => mainWindow.Show();
         }
     }

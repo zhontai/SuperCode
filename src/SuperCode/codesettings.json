@@ -2,5 +2,5 @@
   "closeToTray": true,
   "openAtLogin": false,
   "savePath": "",
-  "initDb": true
+  "initDb": false
 }
